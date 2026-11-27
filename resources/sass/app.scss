@@ -1,0 +1,628 @@
+// -----------------------------------------------------------------------------
+// MiniBook design tokens
+// -----------------------------------------------------------------------------
+// Bootstrap variables must be set before importing Bootstrap.
+$mb-primary: #087f65;
+$mb-primary-dark: #066b55;
+$mb-bg: #f5f7f8;
+$mb-surface: #ffffff;
+$mb-text: #23332f;
+$mb-muted: #7b8986;
+$mb-success-bg: #e8f6f0;
+$mb-warning-bg: #fff5dd;
+$mb-danger-bg: #fff0f2;
+$mb-border: #e4e9e8;
+
+$primary: $mb-primary;
+$body-bg: $mb-bg;
+$body-color: $mb-text;
+$body-secondary-color: $mb-muted;
+$body-secondary-bg: #eef2f1;
+$body-tertiary-bg: #f8faf9;
+$link-color: $mb-primary;
+$link-hover-color: $mb-primary-dark;
+$link-decoration: none;
+$link-hover-decoration: underline;
+
+$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+$font-size-base: 0.95rem;
+$line-height-base: 1.55;
+$headings-font-weight: 700;
+$headings-line-height: 1.25;
+
+$border-color: $mb-border;
+$border-radius: 0.65rem;
+$border-radius-sm: 0.45rem;
+$border-radius-lg: 0.9rem;
+$border-radius-xl: 1.1rem;
+$border-radius-xxl: 1.35rem;
+
+$input-border-color: #d8e0de;
+$input-focus-border-color: #5fb7a5;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba(8, 127, 101, 0.14);
+$input-placeholder-color: #9aa7a4;
+
+$btn-font-weight: 600;
+$btn-padding-y: 0.55rem;
+$btn-padding-x: 1rem;
+$btn-border-radius: 0.6rem;
+$btn-border-radius-sm: 0.5rem;
+$btn-border-radius-lg: 0.75rem;
+
+$card-bg: $mb-surface;
+$card-border-color: $mb-border;
+$card-border-radius: $border-radius-xl;
+$card-cap-bg: $mb-surface;
+$card-cap-padding-y: 1rem;
+$card-cap-padding-x: 1.25rem;
+
+$badge-font-weight: 600;
+$badge-padding-y: 0.4em;
+$badge-padding-x: 0.65em;
+$badge-border-radius: 0.5rem;
+
+$nav-link-color: $mb-muted;
+$nav-link-hover-color: $mb-primary;
+$nav-link-padding-y: 0.6rem;
+$nav-link-padding-x: 0.8rem;
+
+$dropdown-border-color: $mb-border;
+$dropdown-border-radius: $border-radius-lg;
+$dropdown-box-shadow: 0 0.75rem 2rem rgba(16, 24, 40, 0.1);
+$dropdown-link-active-bg: $mb-success-bg;
+$dropdown-link-active-color: $mb-primary-dark;
+
+$modal-content-border-color: $mb-border;
+$modal-content-border-radius: $border-radius-xl;
+$modal-header-border-color: $mb-border;
+
+$offcanvas-horizontal-width: 18rem;
+$table-border-color: $mb-border;
+$table-hover-bg: #f8fbfa;
+$progress-height: 0.55rem;
+$progress-border-radius: 999px;
+
+$enable-shadows: false;
+$enable-gradients: false;
+
+@import "bootstrap/scss/bootstrap";
+
+// -----------------------------------------------------------------------------
+// App-wide tokens and primitives
+// -----------------------------------------------------------------------------
+:root {
+    --mb-primary: #{$mb-primary};
+    --mb-primary-dark: #{$mb-primary-dark};
+    --mb-bg: #{$mb-bg};
+    --mb-surface: #{$mb-surface};
+    --mb-text: #{$mb-text};
+    --mb-muted: #{$mb-muted};
+    --mb-success-bg: #{$mb-success-bg};
+    --mb-warning-bg: #{$mb-warning-bg};
+    --mb-danger-bg: #{$mb-danger-bg};
+    --mb-border: #{$mb-border};
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--mb-bg);
+    color: var(--mb-text);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(8, 127, 101, 0.35);
+    outline-offset: 2px;
+}
+
+.mb-muted {
+    color: var(--mb-muted) !important;
+}
+
+.mb-text-primary {
+    color: var(--mb-primary) !important;
+}
+
+.mb-surface {
+    background-color: var(--mb-surface);
+}
+
+.mb-border {
+    border-color: var(--mb-border) !important;
+}
+
+.mb-card {
+    border: 1px solid var(--mb-border);
+    border-radius: 1rem;
+    background: var(--mb-surface);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.mb-card-hover {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.mb-card-hover:hover {
+    border-color: #bcd8d1;
+    box-shadow: 0 0.75rem 1.75rem rgba(16, 24, 40, 0.08);
+    transform: translateY(-1px);
+}
+
+.mb-page-title {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: 0.35rem;
+}
+
+.mb-page-subtitle {
+    color: var(--mb-muted);
+    margin-bottom: 0;
+}
+
+.mb-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mb-muted);
+}
+
+// -----------------------------------------------------------------------------
+// Brand, navigation and layouts
+// -----------------------------------------------------------------------------
+.mb-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--mb-text);
+    text-decoration: none;
+}
+
+.mb-brand:hover {
+    color: var(--mb-text);
+    text-decoration: none;
+}
+
+.mb-brand-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.7rem;
+    background: var(--mb-primary);
+    color: #fff;
+    font-size: 1.05rem;
+    box-shadow: 0 0.35rem 0.8rem rgba(8, 127, 101, 0.2);
+}
+
+.mb-sidebar {
+    background: var(--mb-surface);
+    border-right: 1px solid var(--mb-border);
+}
+
+@media (min-width: 992px) {
+    .mb-sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+.mb-nav-section {
+    margin: 0 0 0.45rem;
+    padding: 0 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #9aa7a4;
+}
+
+.mb-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.62rem 0.8rem;
+    border-radius: 0.65rem;
+    color: #5e6d69;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mb-nav-link i {
+    width: 1.15rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.mb-nav-link:hover,
+.mb-nav-link:focus {
+    background: #f1f8f6;
+    color: var(--mb-primary);
+    text-decoration: none;
+}
+
+.mb-nav-link.active {
+    background: var(--mb-success-bg);
+    color: var(--mb-primary-dark);
+    font-weight: 650;
+}
+
+.mb-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--mb-border);
+}
+
+.mb-avatar {
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--mb-success-bg);
+    color: var(--mb-primary-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.mb-venue-card {
+    border: 1px solid var(--mb-border);
+    border-radius: 0.9rem;
+    background: #f8fbfa;
+    padding: 0.9rem;
+}
+
+// -----------------------------------------------------------------------------
+// Date strip and slot cards
+// -----------------------------------------------------------------------------
+.mb-date-strip {
+    display: flex;
+    gap: 0.65rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: thin;
+}
+
+.mb-date-card {
+    flex: 0 0 auto;
+    min-width: 4.75rem;
+    padding: 0.7rem 0.65rem;
+    border: 1px solid var(--mb-border);
+    border-radius: 0.8rem;
+    background: var(--mb-surface);
+    color: var(--mb-text);
+    text-align: center;
+    text-decoration: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.mb-date-card:hover {
+    border-color: #9fcfc3;
+    color: var(--mb-primary-dark);
+    text-decoration: none;
+}
+
+.mb-date-card.active {
+    background: var(--mb-primary);
+    border-color: var(--mb-primary);
+    color: #fff;
+    box-shadow: 0 0.45rem 1rem rgba(8, 127, 101, 0.18);
+}
+
+.mb-date-card .mb-date-day {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.mb-date-card .mb-date-number {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.mb-slot {
+    width: 100%;
+    height: 100%;
+    padding: 0.9rem;
+    border: 1px solid var(--mb-border);
+    border-radius: 0.85rem;
+    background: var(--mb-surface);
+    color: var(--mb-text);
+    text-align: left;
+    transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button.mb-slot {
+    cursor: pointer;
+}
+
+button.mb-slot:hover {
+    border-color: #9fcfc3;
+    box-shadow: 0 0.4rem 1rem rgba(16, 24, 40, 0.07);
+}
+
+.mb-slot.is-selected {
+    border-color: var(--mb-primary);
+    background: var(--mb-success-bg);
+    box-shadow: 0 0 0 0.2rem rgba(8, 127, 101, 0.12);
+}
+
+.mb-slot.is-disabled,
+.mb-slot:disabled {
+    cursor: not-allowed;
+    background: #f8f9fa;
+    color: #8d9996;
+    opacity: 0.75;
+    box-shadow: none;
+}
+
+.mb-slot.is-occupied {
+    background: var(--mb-danger-bg);
+    border-color: #f2c7ce;
+    color: #8d4c56;
+}
+
+.mb-slot.is-maintenance {
+    background: #f4f6f6;
+    border-color: #dbe1e0;
+    color: #6f7b78;
+}
+
+.mb-slot-time {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.mb-slot-meta {
+    font-size: 0.75rem;
+    color: var(--mb-muted);
+}
+
+.mb-slot-price {
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+// -----------------------------------------------------------------------------
+// Status badges
+// -----------------------------------------------------------------------------
+.mb-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.38em 0.65em;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 650;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.mb-badge-available,
+.mb-badge-approved {
+    background: var(--mb-success-bg);
+    color: #056b54;
+}
+
+.mb-badge-occupied,
+.mb-badge-rejected {
+    background: var(--mb-danger-bg);
+    color: #9b3d49;
+}
+
+.mb-badge-pending {
+    background: var(--mb-warning-bg);
+    color: #8a6100;
+}
+
+.mb-badge-maintenance,
+.mb-badge-cancelled {
+    background: #eef1f1;
+    color: #5f6d69;
+}
+
+// -----------------------------------------------------------------------------
+// Booking stepper, summary and upload
+// -----------------------------------------------------------------------------
+.mb-stepper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.mb-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--mb-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.mb-step-number {
+    display: inline-grid;
+    place-items: center;
+    width: 1.55rem;
+    height: 1.55rem;
+    border-radius: 50%;
+    border: 1px solid var(--mb-border);
+    background: #fff;
+    font-size: 0.72rem;
+}
+
+.mb-step.active {
+    color: var(--mb-primary-dark);
+}
+
+.mb-step.active .mb-step-number {
+    background: var(--mb-primary);
+    border-color: var(--mb-primary);
+    color: #fff;
+}
+
+.mb-step.done .mb-step-number {
+    background: var(--mb-success-bg);
+    border-color: #b7dfd3;
+    color: var(--mb-primary-dark);
+}
+
+.mb-step-divider {
+    width: 1.25rem;
+    height: 1px;
+    background: var(--mb-border);
+}
+
+.mb-summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.4rem 0;
+    font-size: 0.9rem;
+}
+
+.mb-summary-row.total {
+    padding-top: 0.8rem;
+    margin-top: 0.4rem;
+    border-top: 1px dashed var(--mb-border);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.mb-upload-zone {
+    border: 1.5px dashed #b9d6cf;
+    border-radius: 0.9rem;
+    background: #fbfdfc;
+    padding: 1.25rem;
+    text-align: center;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.mb-upload-zone:hover,
+.mb-upload-zone.is-dragover {
+    border-color: var(--mb-primary);
+    background: var(--mb-success-bg);
+}
+
+// -----------------------------------------------------------------------------
+// KPI and dashboard primitives
+// -----------------------------------------------------------------------------
+.mb-kpi-label {
+    color: var(--mb-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.mb-kpi-value {
+    font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    font-weight: 750;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+}
+
+.mb-kpi-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 0.7rem;
+    background: var(--mb-success-bg);
+    color: var(--mb-primary-dark);
+}
+
+.mb-empty-state {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--mb-muted);
+}
+
+.mb-empty-state i {
+    font-size: 2rem;
+    color: #b7c6c2;
+}
+
+// -----------------------------------------------------------------------------
+// Auth pages
+// -----------------------------------------------------------------------------
+.mb-auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(8, 127, 101, 0.09), transparent 32rem),
+        radial-gradient(circle at 90% 90%, rgba(8, 127, 101, 0.06), transparent 28rem),
+        var(--mb-bg);
+}
+
+.mb-auth-card {
+    width: 100%;
+    max-width: 27rem;
+}
+
+// -----------------------------------------------------------------------------
+// Utilities and print
+// -----------------------------------------------------------------------------
+.mb-object-cover {
+    object-fit: cover;
+}
+
+.mb-cursor-pointer {
+    cursor: pointer;
+}
+
+.mb-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mb-toast-container {
+    z-index: 1090;
+}
+
+@media print {
+    .mb-sidebar,
+    .mb-topbar,
+    .mb-no-print,
+    footer,
+    .toast-container {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+    }
+
+    .mb-card {
+        box-shadow: none !important;
+        border-color: #d7dddc !important;
+        break-inside: avoid;
+    }
+
+    main {
+        padding: 0 !important;
+    }
+}

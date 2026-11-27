@@ -44,7 +44,7 @@ Gunakan struktur kategori berikut:
 
 Setiap kali selesai mengerjakan **satu task** atau **satu grup task**, kamu **WAJIB** melakukan langkah berikut **sebelum** melapor ke saya:
 
-1. Update file `.agents/tasklist.md`
+1. Update file `agents/tasklist.md`
 2. Tandai task yang selesai dengan `[x]`
 3. Tambahkan emoji ✅ di depan task
 4. Update progress keseluruhan proyek (contoh: `Progress: 35%`)
